@@ -1,0 +1,16 @@
+patient_email,timestamp,glucose_mg_dL,bp_systolic,bp_diastolic,weight_kg
+alice.smith@example.com,2025-05-24T08:00:00,110,120,80,68.5
+alice.smith@example.com,2025-05-24T20:00:00,115,118,78,68.7
+bob.johnson@example.com,2025-05-24T09:15:00,95,130,85,82.3
+bob.johnson@example.com,2025-05-24T21:30:00,100,128,82,82.0
+carol.williams@example.com,2025-05-24T07:50:00,105,110,70,59.2
+carol.williams@example.com,2025-05-24T19:45:00,108,112,72,59.4
+david.brown@example.com,2025-05-24T08:30:00,130,140,90,95.0
+david.brown@example.com,2025-05-24T20:10:00,125,138,88,94.5
+eva.davis@example.com,2025-05-24T06:45:00,90,115,75,70.1
+eva.davis@example.com,2025-05-24T18:20:00,92,117,76,70.3
+frank.miller@example.com,2025-05-24T10:00:00,140,150,95,105.7
+frank.miller@example.com,2025-05-24T22:00:00,135,148,93,105.2
+alice.smith@example.com,2025-05-25T08:05:00,112,119,79,68.6
+bob.johnson@example.com,2025-05-25T09:10:00,98,129,83,82.1
+carol.williams@example.com,2025-05-25T07:55:00,107,113,71,59.3

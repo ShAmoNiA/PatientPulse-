@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Alice Smith",
+    "dob": "1980-05-12",
+    "gender": "female",
+    "sex": "F",
+    "address": "123 Maple St, Springfield, IL",
+    "email": "alice.smith@example.com",
+    "phone": "555-1234"
+  },
+  {
+    "name": "Bob Johnson",
+    "dob": "1975-11-03",
+    "gender": "male",
+    "sex": "M",
+    "address": "456 Oak Ave, Lincoln, NE",
+    "email": "bob.johnson@example.com",
+    "phone": "555-5678"
+  },
+  {
+    "name": "Carol Williams",
+    "dob": "1990-07-22",
+    "gender": "female",
+    "sex": "F",
+    "address": "789 Pine Rd, Madison, WI",
+    "email": "carol.williams@example.com",
+    "phone": "555-8765"
+  },
+  {
+    "name": "David Brown",
+    "dob": "1985-02-15",
+    "gender": "male",
+    "sex": "M",
+    "address": "321 Birch Ln, Austin, TX",
+    "email": "david.brown@example.com",
+    "phone": "555-4321"
+  },
+  {
+    "name": "Eva Davis",
+    "dob": "1978-09-30",
+    "gender": "female",
+    "sex": "F",
+    "address": "654 Cedar Blvd, Portland, OR",
+    "email": "eva.davis@example.com",
+    "phone": "555-2468"
+  },
+  {
+    "name": "Frank Miller",
+    "dob": "1969-12-05",
+    "gender": "male",
+    "sex": "M",
+    "address": "987 Elm St, Denver, CO",
+    "email": "frank.miller@example.com",
+    "phone": "555-9753"
+  }
+]
