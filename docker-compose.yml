@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: health
+      POSTGRES_USER: healthapi
+      POSTGRES_PASSWORD: supersecret
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks: [healthnet]
+
+  api:
+    build: .
+    restart: always
+    environment:
+      DATABASE_URL: postgresql://healthapi:supersecret@db:5432/health
+      ANALYTICS_VERSION: "1"
+    ports:
+      - "8000:8000"
+    depends_on: [db]
+    networks: [healthnet]
+
+volumes:
+  pgdata:
+
+networks:
+  healthnet:
