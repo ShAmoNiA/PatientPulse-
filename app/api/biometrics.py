@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query, Path
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 from app.db.session import SessionLocal
-from app.db.models import Biometric
+from app.db.models import Biometric, BiometricHourly
 from app.schemas.pydantic_models import BiometricIn, BiometricOut
 
 router = APIRouter(tags=["biometrics"])
@@ -55,18 +55,40 @@ def upsert_biometric(
     data: BiometricIn,
     db: Session = Depends(get_db)
 ):
-    biometric = db.query(Biometric).filter_by(
-        patient_id=data.patient_id,
-        timestamp=data.timestamp,
-        type=data.type
-    ).first()
+    # ---------- 1. Upsert into the main table ---------------------------------
+    biometric = (
+        db.query(Biometric)
+        .filter_by(
+            patient_id=data.patient_id,
+            timestamp=data.timestamp,
+            type=data.type
+        )
+        .first()
+    )
 
     if biometric:
-        biometric.value = data.value
+        biometric.value = data.value                       # update
     else:
-        biometric = Biometric(**data.dict())
+        biometric = Biometric(**data.dict())               # insert
         db.add(biometric)
 
+    # ---------- 2. Upsert into the hourly buffer ------------------------------
+    hourly = (
+        db.query(BiometricHourly)
+        .filter_by(
+            patient_id=data.patient_id,
+            timestamp=data.timestamp,
+            type=data.type
+        )
+        .first()
+    )
+
+    if hourly:
+        hourly.value = data.value                          # update
+    else:
+        db.add(BiometricHourly(**data.dict()))             # insert
+
+    # ---------- 3. Commit ------------------------------------------------------
     db.commit()
     db.refresh(biometric)
     return biometric

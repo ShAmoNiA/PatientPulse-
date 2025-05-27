@@ -55,3 +55,21 @@ class Analytics(Base):
     computed_at = Column(DateTime)
 
     patient = relationship("Patient", back_populates="analytics")
+
+
+# models.py  (or wherever you keep your ORM models)
+
+class BiometricHourly(Base):
+    __tablename__ = "biometrics_hourly"
+
+    id          = Column(Integer, primary_key=True)
+    patient_id  = Column(Integer, index=True, nullable=False)
+    timestamp   = Column(DateTime, index=True, nullable=False)
+    type        = Column(String,  index=True, nullable=False)
+    value       = Column(Float,                 nullable=False)
+
+    # (optional but recommended) → avoid duplicates
+    __table_args__ = (
+        UniqueConstraint("patient_id", "timestamp", "type", name="uix_bh_pid_ts_type"),
+    )
+
