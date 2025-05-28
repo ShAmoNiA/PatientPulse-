@@ -30,7 +30,7 @@ app.include_router(analytics.router, prefix="/api/v1")
 if __name__ == "__main__":
     scheduler = BackgroundScheduler()
     if settings.ANALYTICS_VERSION == 1:
-        scheduler.add_job(run_hourly_analytics, 'cron', second=10)
+        scheduler.add_job(run_hourly_analytics, 'cron', second=10) #Change this value to your liking.
     else:
         scheduler.add_job(run_hourly_analytics_v2, 'cron', second=10)
     scheduler.start()
