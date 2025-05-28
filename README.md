@@ -28,6 +28,14 @@ PatientPulse is a FastAPI-based application designed to manage patient health da
 * **Testing**: Pytest, TestClient
 
 ---
+## Architecture Decisions
+* **Backend** Framework**: FastAPI is a modern, high-performance Python web framework, a good choice for building APIs.
+* **Database**: PostgreSQL is a robust and feature-rich relational database, suitable for this type of application.
+* **ORM**: SQLAlchemy provides a powerful ORM layer, abstracting database interactions.
+* **Task Scheduling**: APScheduler is used for running background tasks, specifically the hourly analytics computation.
+* **Containerization**: Docker is used for containerization, with a docker-compose.yml file provided to set up the API and database services, facilitating easier deployment and development environment consistency.
+* **Two-Stage Analytics**: The design incorporates two versions of analytics. Version 2, using a biometrics_hourly buffer table, suggests a design decision to handle potentially high-frequency biometric updates more efficiently by batching them for analytics processing. This can reduce the load on the main biometrics table during analytics runs.
+---
 ## Setup and Installation (Local)
 
 **Prerequisites:**
